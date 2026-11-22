@@ -80,7 +80,16 @@ function dk(b){return 'background:#1b1710;color:#f6dc94'}
 function cls(b,i){return 'g'+((i+b.g)%6+1)}
 function tiles(b,a){return '<div class="grid3">'+a.map(function(x,i){return '<div class="img '+cls(b,i)+'">'+x+'</div>'}).join('')+'</div>'}
 function row(r){return '<div class="row">'+r.map(function(x){return '<div>'+x[0]+'<small>'+x[1]+'</small></div>'}).join('')+'</div>'}
-function mono(b,fill){return '<svg viewBox="0 0 100 100" class="big"><circle cx="50" cy="50" r="44" fill="none" stroke="'+fill+'" stroke-width="3"/><text x="50" y="65" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="46" fill="'+fill+'">'+b.m+'</text></svg>'}
+function mono(b,fill,bg){var i=(b.g||0)%6,h=0,nm=b.n||"";for(var q=0;q<nm.length;q++)h=(h*31+nm.charCodeAt(q))%997;var w=nm.split(/[\s&]+/).filter(Boolean),one=b.m,ini=(w.length>1?w[0].charAt(0)+w[1].charAt(0):one).toUpperCase(),sf="Georgia,serif",sa="Sora,sans-serif",st='fill="none" stroke="'+fill+'" stroke-width="3"',th='fill="none" stroke="'+fill+'" stroke-width="1"',
+star=function(cx,cy,r){var p=[];for(var k=0;k<10;k++){var a=-Math.PI/2+k*Math.PI/5,rr=k%2?r*.45:r;p.push((cx+rr*Math.cos(a)).toFixed(1)+","+(cy+rr*Math.sin(a)).toFixed(1))}return '<polygon points="'+p.join(" ")+'" fill="'+fill+'"/>'},
+tx=function(x,y,s,t,ff,c,x2){return '<text x="'+x+'" y="'+y+'" text-anchor="middle" font-family="'+ff+'" font-weight="700" font-size="'+s+'" fill="'+(c||fill)+'" '+(x2||"")+'>'+t+'</text>'},g="";
+if(i===0){g='<circle cx="50" cy="50" r="44" '+st+'/><circle cx="50" cy="50" r="37" '+th+'/><circle cx="50" cy="11" r="2.5" fill="'+fill+'"/><circle cx="50" cy="89" r="2.5" fill="'+fill+'"/>'+tx(50,64,44,one,h%2?sf:sa)}
+else if(i===1){g='<rect x="8" y="8" width="84" height="84" rx="20" '+st+'/><rect x="15" y="15" width="70" height="70" rx="14" '+th+'/>'+tx(50,66,46,one,sf)}
+else if(i===2){g='<polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="'+fill+'"/>'+tx(50,60,32,ini,sa,bg||"#fff")+'<line x1="34" y1="70" x2="66" y2="70" stroke="'+(bg||"#fff")+'" stroke-width="2"/>'}
+else if(i===3){g='<path d="M50 5 L89 19 V50 C89 74 71 88 50 96 C29 88 11 74 11 50 V19 Z" '+st+'/>'+tx(50,52,30,ini,sf)+'<line x1="32" y1="61" x2="68" y2="61" stroke="'+fill+'" stroke-width="2"/>'+star(50,75,7)}
+else if(i===4){g='<polygon points="50,4 96,50 50,96 4,50" '+st+'/><polygon points="50,15 85,50 50,85 15,50" '+th+'/>'+tx(50,62,40,one,sf,fill,'font-style="italic"')}
+else{var lv="";for(var s=0;s<2;s++)for(var k=0;k<6;k++){var th2=(100+k*32)*Math.PI/180,x=50+38*Math.cos(th2),y=50+38*Math.sin(th2),dg=(100+k*32)+90;if(s){x=100-x;dg=-dg}lv+='<ellipse cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" rx="3.2" ry="8" transform="rotate('+dg+' '+x.toFixed(1)+' '+y.toFixed(1)+')" fill="'+fill+'"/>'}g=lv+tx(50,63,38,one,sf)}
+return '<svg viewBox="0 0 100 100" class="big">'+g+'</svg>'}
 var R={
 company:function(b){return win(b.d+"/about",'<h4>'+b.t+'</h4><p>'+b.s+'</p><span class="pill">'+b.a+'</span>'+row(b.r))},
 landing:function(b){return win(b.d,'<h4>'+b.t+'</h4><p>'+b.s+'</p><div class="ln"><span>Full name</span><span>________</span></div><div class="ln"><span>Email</span><span>________</span></div><p style="margin-top:12px"><span class="pill">'+b.a+' →</span></p>')},
@@ -89,15 +98,15 @@ biz:function(b){return win(b.d,'<h4>'+b.t+'</h4><p>'+b.s+'</p><span class="pill"
 cal:function(b){var d=["Reel","Post","Story","Post","Reel","Promo","Rest"];return '<div class="win"><div class="pg"><b>'+b.n+' · content calendar</b><div class="grid3" style="grid-template-columns:repeat(7,1fr);margin-top:10px">'+d.map(function(x,i){return '<div class="img '+cls(b,i)+'" style="aspect-ratio:.8;font-size:9px">'+(i+1)+'<br>'+x+'</div>'}).join('')+'</div><p style="margin-top:10px">Scheduled · replies handled · monthly report</p></div></div>'},
 feed:function(b){return win("@"+b.h,'<b>'+b.n+'</b> · '+b.f+' followers<div style="height:8px"></div>'+tiles(b,b.k))},
 ad:function(b){return '<div class="win"><div class="pg"><small>Sponsored · '+b.n+'</small><div class="img '+cls(b,0)+'" style="aspect-ratio:16/10;margin:8px 0;font-size:17px">'+b.o+'</div><div class="ln"><b>'+b.s+'</b><span class="pill">'+b.a+'</span></div></div></div>'},
-search:function(b){return '<div class="win"><div class="pg"><small style="color:#5a5">Ad · '+b.d+'</small><h4 style="color:#1a4fb5;font-size:17px">'+b.t+'</h4><p>'+b.s+'</p><span class="chip">Call</span><span class="chip">Directions</span><span class="chip">'+b.a+'</span></div></div>'},
+search:function(b){return '<div class="win"><div class="pg"><small style="color:#8a6212">Ad · '+b.d+'</small><h4 style="color:#8a6212;font-size:17px">'+b.t+'</h4><p>'+b.s+'</p><span class="chip">Call</span><span class="chip">Directions</span><span class="chip">'+b.a+'</span></div></div>'},
 people:function(b){return '<div class="win"><div class="pg"><b>Creators for '+b.n+'</b><div class="grid2" style="margin-top:8px">'+[["@alex.moves","85K"],["@sofia.style","120K"],["@tom.daily","42K"],["@lena.picks","60K"]].map(function(x,i){return '<div><div class="img '+cls(b,i)+'" style="aspect-ratio:1.4">'+x[0]+'</div>Reach '+x[1]+'</div>'}).join('')+'</div></div></div>'},
 camp:function(b){return '<div class="win"><div class="pg"><b>'+b.n+' · '+b.o+'</b>'+[["Teaser","Wk 1"],["Launch","Wk 2"],["Promo","Wk 3"],["Recap","Wk 4"]].map(function(x){return '<div class="ln"><span>'+x[0]+'</span><b style="color:#8a6212">'+x[1]+'</b></div>'}).join('')+'<div class="tl"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>'},
-logo:function(b){return '<div class="grid2">'+paper(mono(b,b.col[0])+'<b>'+b.n.toUpperCase()+'</b>')+paper(mono(b,b.col[2])+'<b>'+b.n.toUpperCase()+'</b>','background:'+b.col[0]+';color:'+b.col[2])+'</div>'},
+logo:function(b){return '<div class="grid2">'+paper(mono(b,b.col[0],"#fbf6e9")+'<b>'+b.n.toUpperCase()+'</b>')+paper(mono(b,b.col[2],b.col[0])+'<b>'+b.n.toUpperCase()+'</b>','background:'+b.col[0]+';color:'+b.col[2])+'</div>'},
 brand:function(b){return paper('<h4>'+b.n+'</h4><small>Brand guide</small><hr><div class="sw">'+b.col.map(function(c){return '<i style="background:'+c+'"></i>'}).join('')+'</div><p style="margin-top:10px"><b style="font-family:Sora">Sora</b> headings · Inter text</p>')},
 gfx:function(b){return tiles(b,b.k)},
 promo:function(b){return paper('<small>'+b.n.toUpperCase()+'</small><h4 style="font-size:34px">'+b.o+'</h4><hr><p>'+b.s+'</p><span class="pill">'+b.a+'</span>')},
 video:function(b){return '<div class="vid"><div class="play">▶</div><b style="position:absolute;left:14px;bottom:12px;font:700 15px Sora">'+b.n+' — '+b.o+'</b></div><div class="tl"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p style="color:var(--muted);text-align:center">cut · color · captions · sound</p>'},
-reels:function(b){return '<div class="grid2"><div class="ph"><div class="play">▶</div><b>'+b.k[0]+'</b><span></span></div><div class="ph" style="background:linear-gradient(160deg,#2b3a2f,#1b1710)"><div class="play">▶</div><b>'+b.k[1]+'</b><span></span></div></div>'},
+reels:function(b){return '<div class="grid2"><div class="ph"><div class="play">▶</div><b>'+b.k[0]+'</b><span></span></div><div class="ph" style="background:linear-gradient(160deg,#3a2a10,#1b1710)"><div class="play">▶</div><b>'+b.k[1]+'</b><span></span></div></div>'},
 motion:function(b){return '<div class="vid" style="display:grid;place-items:center"><div style="font:700 32px Sora;color:#f6dc94;letter-spacing:.1em">'+b.n.toUpperCase()+'</div></div><div class="tl"><i></i><i></i><i></i></div><p style="color:var(--muted);text-align:center">logo reveal · lower thirds · animated titles</p>'},
 post:function(b){return '<div class="grid2">'+b.k.slice(0,4).map(function(x,i){return '<div class="img '+cls(b,i)+'" style="aspect-ratio:1;font-size:15px">'+x+'</div>'}).join('')+'</div>'},
 poster:function(b){return paper('<div class="img '+cls(b,0)+'" style="aspect-ratio:1.2;font-size:22px">'+b.t+'</div><h4 style="margin-top:10px">'+b.n+'</h4><p>'+b.s+'</p>')},
@@ -109,7 +118,7 @@ card:function(b){return '<div class="grid2">'+paper('<h4>'+b.w+'</h4><small>'+b.
 };
 function B(n,d,t,s,a,o,m,col,p,r,k,w,j,c,f){return {n:n,d:d,h:d.split(".")[0],t:t,s:s,a:a,o:o,m:m,col:col,p:p||[],r:r||[],k:k||[],w:w,j:j,c:c,f:f||"24K",g:0}}
 var BR={
-nb:B("Northbridge Capital","northbridgecap.com","Investing with clarity, since 1998","Wealth advisory for families and founders in 14 countries.","Book a consultation","Q4 Market Outlook","N",["#0f2a47","#1d4f8a","#c9a24a","#e8edf3","#ffffff"],0,[["25+","Years"],["14","Countries"],["$2B","Managed"]],["Market notes","Q4 outlook","Team","Client story","Webinar","Insights"]),
+nb:B("Northbridge Capital","northbridgecap.com","Investing with clarity, since 1998","Wealth advisory for families and founders in 14 countries.","Book a consultation","Q4 Market Outlook","N",["#1b1710","#8a6212","#d4a63f","#f3ecdb","#ffffff"],0,[["25+","Years"],["14","Countries"],["$2B","Managed"]],["Market notes","Q4 outlook","Team","Client story","Webinar","Insights"]),
 af:B("AeroFit","aerofit.app","Your first month is on us","Train anywhere with coaches in your pocket.","Start free trial","","A",0,0,[["1M","Members"],["4.8★","Rating"],["150+","Classes"]]),
 hw:B("Halden Watches","haldenwatches.com","","","","","H",0,[["Classic 38","$240"],["Chrono","$390"],["Field Auto","$310"]]),
 hd:B("Harbor Dental","harbordental.com","A healthier smile starts here","Family dentistry, whitening and implants in the heart of Seattle.","Book appointment","","H",0,0,[["20+","Years"],["Mon–Sat","Open"],["4.9★","Reviews"]]),
@@ -121,7 +130,7 @@ sm:B("Summit Movers","summitmovers.com","Best Moving Company in Austin, TX","Lic
 no:B("Silver Activewear","silveractive.com","","","","Spring Collection","N"),
 vh:B("Voyage Hotels","voyagehotels.com","","","","Summer Escape Launch","V"),
 ao:B("Atlas & Oak","atlasandoak.com","","","","","A",["#1b1710","#8a6212","#d4a63f"]),
-sw:B("Solstice Wellness","solsticewellness.com","","","","","S",["#2f4a3c","#8fb59a","#e9d8a6","#f4a261","#fbf6e9"]),
+sw:B("Solstice Wellness","solsticewellness.com","","","","","S",["#1b1710","#8a6212","#d4a63f","#f6dc94","#fbf6e9"]),
 ck:B("Copper Kettle","copperkettle.com","","","","","C",0,0,0,["Menu board","Flyer","Sticker","Tote","Cup","Signage"]),
 ms:B("Metro Style","metrostyle.com","","Free shipping on orders over $75","Shop the sale","BLACK FRIDAY · 50% OFF","M"),
 wt:B("Wanderlust Travel","wanderlusttravel.com","","","","Santorini in 60 seconds","W"),

@@ -74,7 +74,16 @@ function dk(b){return 'background:#1b1710;color:#f6dc94'}
 function cls(b,i){return 'g'+((i+b.g)%6+1)}
 function tiles(b,a){return '<div class="grid3">'+a.map(function(x,i){return '<div class="img '+cls(b,i)+'">'+x+'</div>'}).join('')+'</div>'}
 function row(r){return '<div class="row">'+r.map(function(x){return '<div>'+x[0]+'<small>'+x[1]+'</small></div>'}).join('')+'</div>'}
-function mono(b,fill){return '<svg viewBox="0 0 100 100" class="big"><circle cx="50" cy="50" r="44" fill="none" stroke="'+fill+'" stroke-width="3"/><text x="50" y="65" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="46" fill="'+fill+'">'+b.m+'</text></svg>'}
+function mono(b,fill,bg){var i=(b.g||0)%6,h=0,nm=b.n||"";for(var q=0;q<nm.length;q++)h=(h*31+nm.charCodeAt(q))%997;var w=nm.split(/[\s&]+/).filter(Boolean),one=b.m,ini=(w.length>1?w[0].charAt(0)+w[1].charAt(0):one).toUpperCase(),sf="Georgia,serif",sa="Sora,sans-serif",st='fill="none" stroke="'+fill+'" stroke-width="3"',th='fill="none" stroke="'+fill+'" stroke-width="1"',
+star=function(cx,cy,r){var p=[];for(var k=0;k<10;k++){var a=-Math.PI/2+k*Math.PI/5,rr=k%2?r*.45:r;p.push((cx+rr*Math.cos(a)).toFixed(1)+","+(cy+rr*Math.sin(a)).toFixed(1))}return '<polygon points="'+p.join(" ")+'" fill="'+fill+'"/>'},
+tx=function(x,y,s,t,ff,c,x2){return '<text x="'+x+'" y="'+y+'" text-anchor="middle" font-family="'+ff+'" font-weight="700" font-size="'+s+'" fill="'+(c||fill)+'" '+(x2||"")+'>'+t+'</text>'},g="";
+if(i===0){g='<circle cx="50" cy="50" r="44" '+st+'/><circle cx="50" cy="50" r="37" '+th+'/><circle cx="50" cy="11" r="2.5" fill="'+fill+'"/><circle cx="50" cy="89" r="2.5" fill="'+fill+'"/>'+tx(50,64,44,one,h%2?sf:sa)}
+else if(i===1){g='<rect x="8" y="8" width="84" height="84" rx="20" '+st+'/><rect x="15" y="15" width="70" height="70" rx="14" '+th+'/>'+tx(50,66,46,one,sf)}
+else if(i===2){g='<polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="'+fill+'"/>'+tx(50,60,32,ini,sa,bg||"#fff")+'<line x1="34" y1="70" x2="66" y2="70" stroke="'+(bg||"#fff")+'" stroke-width="2"/>'}
+else if(i===3){g='<path d="M50 5 L89 19 V50 C89 74 71 88 50 96 C29 88 11 74 11 50 V19 Z" '+st+'/>'+tx(50,52,30,ini,sf)+'<line x1="32" y1="61" x2="68" y2="61" stroke="'+fill+'" stroke-width="2"/>'+star(50,75,7)}
+else if(i===4){g='<polygon points="50,4 96,50 50,96 4,50" '+st+'/><polygon points="50,15 85,50 50,85 15,50" '+th+'/>'+tx(50,62,40,one,sf,fill,'font-style="italic"')}
+else{var lv="";for(var s=0;s<2;s++)for(var k=0;k<6;k++){var th2=(100+k*32)*Math.PI/180,x=50+38*Math.cos(th2),y=50+38*Math.sin(th2),dg=(100+k*32)+90;if(s){x=100-x;dg=-dg}lv+='<ellipse cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" rx="3.2" ry="8" transform="rotate('+dg+' '+x.toFixed(1)+' '+y.toFixed(1)+')" fill="'+fill+'"/>'}g=lv+tx(50,63,38,one,sf)}
+return '<svg viewBox="0 0 100 100" class="big">'+g+'</svg>'}
 var R={
 company:function(b){return win(b.d+"/about",'<h4>'+b.t+'</h4><p>'+b.s+'</p><span class="pill">'+b.a+'</span>'+row(b.r))},
 landing:function(b){return win(b.d,'<h4>'+b.t+'</h4><p>'+b.s+'</p><div class="ln"><span>Full name</span><span>________</span></div><div class="ln"><span>Email</span><span>________</span></div><p style="margin-top:12px"><span class="pill">'+b.a+' →</span></p>')},
@@ -86,7 +95,7 @@ ad:function(b){return '<div class="win"><div class="pg"><small>Sponsored · '+b.
 search:function(b){return '<div class="win"><div class="pg"><small style="color:#8a6212">Ad · '+b.d+'</small><h4 style="color:#8a6212;font-size:17px">'+b.t+'</h4><p>'+b.s+'</p><span class="chip">Call</span><span class="chip">Directions</span><span class="chip">'+b.a+'</span></div></div>'},
 people:function(b){return '<div class="win"><div class="pg"><b>Creators for '+b.n+'</b><div class="grid2" style="margin-top:8px">'+[["@alex.moves","85K"],["@sofia.style","120K"],["@tom.daily","42K"],["@lena.picks","60K"]].map(function(x,i){return '<div><div class="img '+cls(b,i)+'" style="aspect-ratio:1.4">'+x[0]+'</div>Reach '+x[1]+'</div>'}).join('')+'</div></div></div>'},
 camp:function(b){return '<div class="win"><div class="pg"><b>'+b.n+' · '+b.o+'</b>'+[["Teaser","Wk 1"],["Launch","Wk 2"],["Promo","Wk 3"],["Recap","Wk 4"]].map(function(x){return '<div class="ln"><span>'+x[0]+'</span><b style="color:#8a6212">'+x[1]+'</b></div>'}).join('')+'<div class="tl"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>'},
-logo:function(b){return '<div class="grid2">'+paper(mono(b,b.col[0])+'<b>'+b.n.toUpperCase()+'</b>')+paper(mono(b,b.col[2])+'<b>'+b.n.toUpperCase()+'</b>','background:'+b.col[0]+';color:'+b.col[2])+'</div>'},
+logo:function(b){return '<div class="grid2">'+paper(mono(b,b.col[0],"#fbf6e9")+'<b>'+b.n.toUpperCase()+'</b>')+paper(mono(b,b.col[2],b.col[0])+'<b>'+b.n.toUpperCase()+'</b>','background:'+b.col[0]+';color:'+b.col[2])+'</div>'},
 brand:function(b){return paper('<h4>'+b.n+'</h4><small>Brand guide</small><hr><div class="sw">'+b.col.map(function(c){return '<i style="background:'+c+'"></i>'}).join('')+'</div><p style="margin-top:10px"><b style="font-family:Sora">Sora</b> headings · Inter text</p>')},
 gfx:function(b){return tiles(b,b.k)},
 promo:function(b){return paper('<small>'+b.n.toUpperCase()+'</small><h4 style="font-size:34px">'+b.o+'</h4><hr><p>'+b.s+'</p><span class="pill">'+b.a+'</span>')},
