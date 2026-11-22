@@ -78,6 +78,11 @@ nav a:hover{color:var(--gold1)}
 .pillars span{display:block;color:var(--muted);font:400 12.5px/1.4 Inter,sans-serif;margin-top:3px}
 
 /* laptop mock */
+.hero-art{display:flex;justify-content:center}.hacard{width:100%;max-width:520px;text-align:center}
+.hacard img{width:100%;height:auto;display:block;mix-blend-mode:screen;filter:contrast(1.15) brightness(.92);-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%)}
+[data-theme=light] .hacard img{mix-blend-mode:normal}
+.hahead{font:800 clamp(28px,7.4vw,38px)/1.12 Sora,sans-serif;margin:0 0 -26px;position:relative;z-index:2}
+.hatx{margin-top:-14px;padding:0 8px}.hatx h3{font:700 22px/1.2 Sora,sans-serif;margin:0 0 8px}.hatx p{color:var(--gold1);margin:0 auto;max-width:42ch;font-size:15px}
 .mock{position:relative;perspective:1200px}
 .screen{--ink:#f5f1e8;--muted:#a9a396;--line:rgba(231,190,100,.18);--gold1:#f6dc94;--gold2:#d4a63f;--gold3:#8f6a1c;--gold:linear-gradient(135deg,#f6dc94,#d4a63f 55%,#8f6a1c);color:#f5f1e8;background:#0d0d0f;border:1px solid rgba(231,190,100,.35);border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(212,166,63,.14);overflow:hidden;transform:rotateY(-8deg) rotateX(3deg)}
 .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
@@ -227,19 +232,14 @@ footer b{display:block;font:700 12px/1 Sora;letter-spacing:.3em;color:var(--ink)
         <div><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></svg>Ongoing Support<span>We stay after launch</span></div>
       </div>
     </div>
-    <div class="mock" aria-hidden="true">
-      <div class="screen">
-        <div class="bar"><i></i><i></i><i></i><em>yourbusiness.com</em></div>
-        <div class="page">
-          <div class="tiny"><span>YOUR BRAND</span><span>HOME · SERVICES · CONTACT</span></div>
-          <h3>Digital Solutions for Modern Business</h3>
+    <div class="hero-art"><div class="hacard">
+        <h2 class="hahead">Smarter <span class="gold-t">Digital Solutions</span> for a Greater Tomorrow.</h2>
+        <img src="hero-globe.jpg" alt="Web Juragan - website development, digital solutions, business growth and creative services" width="628" height="890" loading="eager">
+        <div class="hatx">
+          <h3>Digital Solutions</h3>
           <p>Websites, marketing, branding and creative content, all in one team that helps your business grow.</p>
-          <span class="pill">Get Started</span>
-          <div class="row"><b></b><b></b><b></b></div>
         </div>
-      </div>
-      <div class="base"></div>
-    </div>
+      </div></div>
   </div>
 </section>
 
