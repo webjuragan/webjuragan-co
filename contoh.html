@@ -168,7 +168,7 @@ var S=[
 ["business-card-design","Creative Services","Business Card Design","Cards people actually keep, front and back.","card",["Front and back","Print-ready files","QR code option","Matching brand style"],[["2","Sides"],["3 days","Typical"],["2","Revisions"]],"business-card-design-demo.html"]
 ];
 var h=(location.hash||"").slice(1),i=0;S.forEach(function(s,n){if(s[0]===h)i=n});
-var s=S[i];
+var s=S[i];if(s[7]){location.replace(s[7]);return}
 document.title=s[2]+" · Web Juragan";
 document.getElementById("cat").textContent=s[1];
 document.getElementById("no").textContent="Sample · "+s[1];
@@ -179,8 +179,7 @@ document.getElementById("dl").innerHTML=s[5].map(function(x){return "<li>"+x+"</
 document.getElementById("st").innerHTML=s[6].map(function(x){return "<div><b>"+x[0]+"</b><span>"+x[1]+"</span></div>"}).join("");
 var plain=s[2].replace("&amp;","&");
 var c='<a class="btn btn-gold" target="_blank" rel="noopener" href="'+WA+encodeURIComponent("Hello Web Juragan, I'd like to order "+plain)+'">Order '+s[2]+' on WhatsApp</a>';
-if(s[7])c+='<a class="btn" href="'+s[7]+'">See full demo site →</a>';
-document.getElementById("cta").innerHTML=c;document.getElementById("cta-top").innerHTML=s[7]?'<a class="btn btn-gold" href="'+s[7]+'">See full demo site →</a>':'<a class="btn btn-gold" target="_blank" rel="noopener" href="'+WA+encodeURIComponent("Hello Web Juragan, I\'d like to order "+plain)+'">Order '+s[2]+' on WhatsApp</a>';
+document.getElementById("cta").innerHTML=c;document.getElementById("cta-top").innerHTML='<a class="btn btn-gold" target="_blank" rel="noopener" href="'+WA+encodeURIComponent("Hello Web Juragan, I\'d like to order "+plain)+'">Order '+s[2]+' on WhatsApp</a>';
 var gd=G[s[0]].split(","),hs=H[s[1]],fq=F[s[1]],pp=P[plain]||P[s[2]];
 var mh='<h3>Good for</h3><div class="chips2" style="margin-bottom:30px">'+gd.map(function(x){return "<span>"+x+"</span>"}).join("")+'</div>';
 mh+='<h3>How it works</h3><div class="steps" style="margin-bottom:30px">'+hs.map(function(x,n){return "<div><b>0"+(n+1)+"</b><h4>"+x[0]+"</h4><p>"+x[1]+"</p></div>"}).join("")+'</div>';
