@@ -370,5 +370,25 @@ b.addEventListener("click",function(){var n=r.getAttribute("data-theme")==="ligh
   W.forEach(function(w){document.getElementById("w0").appendChild(card(w))});
 })();
 </script>
+<style>
+.wtabs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:26px 0 10px}
+@media(min-width:700px){.wtabs{grid-template-columns:repeat(4,1fr)}}
+.wtabs a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:110px;font:700 17px/1.25 Sora,sans-serif;color:var(--ink);text-decoration:none;background:radial-gradient(140px 90px at 50% 0,rgba(212,166,63,.18),transparent 70%),var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 14px;text-align:center;transition:transform .15s,border-color .15s}
+.wtabs a:hover{transform:translateY(-3px);border-color:rgba(231,190,100,.5)}
+.wtabs a em{font-style:normal;color:var(--gold1);font-size:18px}
+</style>
+<script>
+(function(){
+var sec=document.getElementById("work");if(!sec)return;
+var heads=[].slice.call(sec.querySelectorAll("h3.grp"));if(!heads.length)return;
+var links=["work-website-development.html", "work-digital-solutions.html", "work-business-growth.html", "work-creative-services.html"];
+var bar=document.createElement("div");bar.className="wtabs";
+heads[0].parentNode.insertBefore(bar,heads[0]);
+heads.forEach(function(h,i){
+ var a=document.createElement("a");a.href=links[i];a.innerHTML="<span>"+h.textContent+"</span><em>&rarr;</em>";bar.appendChild(a);
+ h.remove();var g=document.getElementById("w"+i);if(g)g.remove();
+});
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Business Growth · Web Juragan</title><link rel="icon" href="favicon.png"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem("wj-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<style>
+:root{--bg:#0a0a0b;--bg2:#111113;--card:#161619;--line:rgba(231,190,100,.18);--ink:#f5f1e8;--muted:#a9a396;--gold1:#f6dc94;--gold2:#d4a63f;--gold3:#8f6a1c;--btn:linear-gradient(135deg,#f6dc94,#d4a63f 55%,#8f6a1c);--g:linear-gradient(135deg,var(--gold1),var(--gold2) 55%,var(--gold3));color-scheme:dark}
+[data-theme=light]{--bg:#fbf7ee;--bg2:#f2ead7;--card:#fff;--line:rgba(143,106,28,.28);--ink:#17130a;--muted:#645b47;--gold1:#a87a1c;--gold2:#8a6212;--gold3:#5e3f08;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Sora,Inter,sans-serif;margin:0;line-height:1.15}a{color:inherit}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.top{border-bottom:1px solid var(--line);padding:14px 0}.top .wrap{display:flex;justify-content:space-between;gap:12px;font-size:14px}.top a{text-decoration:none;color:var(--gold1)}
+.eyebrow{font:600 12px/1 Sora;letter-spacing:.26em;text-transform:uppercase;color:var(--gold2);margin:40px 0 12px}
+h1{font-size:clamp(28px,6vw,44px)}.gt{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:58ch;margin-top:12px}
+.stage{margin:30px 0;padding:22px;border:1px solid var(--line);border-radius:22px;background:radial-gradient(500px 240px at 50% 0,rgba(212,166,63,.14),transparent 70%),var(--bg2);display:grid;place-items:center;min-height:300px;overflow:hidden}
+.cols{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:30px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}.box h3{font-size:16px;margin-bottom:10px}
+.box ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--muted);font-size:14.5px}.box li:before{content:"✓ ";color:var(--gold1)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}.stats b{display:block;font:700 24px Sora;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}.stats span{font-size:12px;color:var(--muted)}
+.btn{display:inline-flex;padding:14px 24px;border-radius:999px;font:600 15px/1 Sora;text-decoration:none;border:1px solid var(--line)}.btn-gold{background:var(--btn);color:#1a1204;border-color:transparent;box-shadow:0 6px 24px rgba(212,166,63,.25)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0 24px}
+.pn{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:18px 0 40px;font-size:14px}.pn a{text-decoration:none;color:var(--muted)}.pn a:hover{color:var(--gold1)}
+.note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+/* mocks */
+.m{width:100%;max-width:420px;color:#1b1710;font-size:12px}
+.win{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.bar{background:#ece6d8;padding:8px 12px;display:flex;gap:5px;align-items:center}.bar i{width:8px;height:8px;border-radius:50%;background:#c9bfa8}.bar em{margin-left:8px;font-style:normal;color:#7a705a;font-size:11px}
+.pg{padding:18px}.pg h4{font:700 20px/1.15 Sora;margin:0 0 6px}.pg p{margin:0 0 10px;color:#6b624e}
+.pill{display:inline-block;background:#1b1710;color:#f6dc94;padding:7px 14px;border-radius:99px;font-weight:600}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.row div{background:#f3ecdb;border-radius:8px;padding:10px 6px;text-align:center;font-weight:600}
+.row div small{display:block;color:#8a6212;font-weight:700;margin-top:3px}
+.img{aspect-ratio:1;border-radius:8px;display:grid;place-items:center;font:700 13px Sora;color:#fff;padding:6px;text-align:center}
+.g1{background:linear-gradient(135deg,#8a5a2b,#d4a63f)}.g2{background:linear-gradient(135deg,#1b1710,#8a6212)}.g3{background:linear-gradient(135deg,#8a6212,#f6dc94)}.g4{background:linear-gradient(135deg,#5e3f08,#c9a24a)}.g5{background:linear-gradient(135deg,#2a2112,#a87a1c)}.g6{background:linear-gradient(135deg,#3a2a10,#d4a63f)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.ph{width:170px;aspect-ratio:9/16;border-radius:22px;border:6px solid #111;background:linear-gradient(160deg,#8a5a2b,#1b1710);color:#fff;position:relative;margin:auto;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.ph b{position:absolute;left:10px;right:10px;bottom:40px;font:700 15px/1.2 Sora}.ph span{position:absolute;left:10px;right:10px;bottom:14px;height:4px;border-radius:4px;background:rgba(255,255,255,.3)}.ph span:after{content:"";position:absolute;left:0;top:0;bottom:0;width:55%;background:#f6dc94;border-radius:4px}
+.play{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;color:#fff}
+.vid{aspect-ratio:16/9;border-radius:12px;background:linear-gradient(135deg,#1b1710,#8a5a2b);position:relative;color:#fff;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.tl{display:flex;gap:3px;margin-top:10px}.tl i{height:16px;border-radius:3px;background:#d4a63f;flex:1}.tl i:nth-child(2n){background:#8a6212}.tl i:nth-child(3n){background:#f6dc94}
+.paper{background:#fbf6e9;border-radius:6px;padding:20px;box-shadow:0 20px 50px rgba(0,0,0,.4);text-align:center}
+.paper h4{font:700 22px/1.1 Sora;margin:0 0 6px}.paper hr{border:0;border-top:1px solid #d4a63f;margin:10px 20px}
+.sw{display:flex;height:56px;border-radius:10px;overflow:hidden}.sw i{flex:1}
+.ln{display:flex;justify-content:space-between;border-bottom:1px dotted #bba;padding:5px 0}
+.chip{display:inline-block;background:#f3ecdb;border-radius:99px;padding:3px 9px;margin:2px;font-weight:600}
+.big{width:130px;height:130px;margin:auto}
+.more{margin:0 0 30px}.more h3{font-size:18px;margin:0 0 14px}.chips2{display:flex;flex-wrap:wrap;gap:8px}.chips2 span,.chips2 a{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:8px 14px;font-size:13.5px;color:var(--muted);text-decoration:none}.chips2 a:hover{color:var(--gold1)}
+.steps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.steps div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}.steps b{font:700 22px Sora;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}.steps h4{margin:6px 0 4px;font:600 15px Sora}.steps p{margin:0;color:var(--muted);font-size:14px}
+.price{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}.price b{font:700 28px Sora;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}.price small{display:block;color:var(--muted)}
+.more details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:8px}.more summary{cursor:pointer;font-weight:600}.more details p{margin:8px 0 0;color:var(--muted);font-size:14.5px}
+
+h2{font-size:20px;margin:34px 0 14px}.wg{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.wc{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:16px;text-decoration:none}
+.wc i{width:42px;height:42px;border-radius:12px;background:var(--btn);color:#1a1204;display:grid;place-items:center;font:700 18px Sora;font-style:normal;flex:none}
+.wc span{flex:1;min-width:0}.wc b{display:block;font:600 15px Sora}.wc small{color:var(--muted)}.wc em{color:var(--gold1);font-style:normal}
+.sv{font:600 15px Sora;color:var(--gold1);margin:22px 0 10px}.sv{font:600 15px Sora;color:var(--gold1);margin:22px 0 10px}.sv{font:600 15px Sora;color:var(--gold1);margin:22px 0 10px}
+.sv.sv2{margin:26px 0 10px}
+.mb{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px;padding:13px 16px;border-radius:14px;border:1px dashed var(--line);background:transparent;color:var(--gold1);font:600 14px Sora,Inter,sans-serif;cursor:pointer}
+.mb:hover{background:var(--card)}.mb span{display:inline-block;transition:transform .2s}.mb[aria-expanded=true] span{transform:rotate(180deg)}
+.wc[hidden]{display:none}
+main>h2{display:none}</style></head><body>
+<div class="top"><div class="wrap"><a href="index.html#work">← Back</a><span style="color:var(--muted)">Business Growth</span></div></div>
+<main class="wrap"><div class="eyebrow">Selected work</div><h1><span class="gt">Business Growth</span></h1><p class="lead">Tap any sample to see how it looks. Every one is tailored to your brand, colours and content.</p><h2>Business Growth</h2><h3 class="sv">Logo Design</h3><div class="wg"><a class="wc" href="s.html#logo-design"><i>A</i><span><b>Atlas & Oak</b><small>Logo Design</small></span><em>→</em></a><a class="wc" href="s.html#logo-design-2"><i>E</i><span><b>Ember Cafe</b><small>Logo Design</small></span><em>→</em></a><a class="wc" href="s.html#logo-design-3"><i>W</i><span><b>Willow Shop</b><small>Logo Design</small></span><em>→</em></a><a class="wc" href="s.html#logo-design-4"><i>S</i><span><b>Silver Freelancer</b><small>Logo Design</small></span><em>→</em></a><a class="wc" href="s.html#logo-design-5"><i>P</i><span><b>Prime New startup</b><small>Logo Design</small></span><em>→</em></a><a class="wc" href="s.html#logo-design-6"><i>B</i><span><b>Bright Cafe</b><small>Logo Design</small></span><em>→</em></a><a class="wc" href="s.html#logo-design-7"><i>U</i><span><b>Urban Shop</b><small>Logo Design</small></span><em>→</em></a><a class="wc" href="s.html#logo-design-8"><i>G</i><span><b>Golden Freelancer</b><small>Logo Design</small></span><em>→</em></a><a class="wc" href="s.html#logo-design-9"><i>M</i><span><b>Maple New startup</b><small>Logo Design</small></span><em>→</em></a><a class="wc" href="s.html#logo-design-10"><i>C</i><span><b>Coral Cafe</b><small>Logo Design</small></span><em>→</em></a></div><h3 class="sv">Brand Identity</h3><div class="wg"><a class="wc" href="s.html#brand-identity"><i>S</i><span><b>Solstice Wellness</b><small>Brand Identity</small></span><em>→</em></a><a class="wc" href="s.html#brand-identity-2"><i>W</i><span><b>Willow Franchise</b><small>Brand Identity</small></span><em>→</em></a><a class="wc" href="s.html#brand-identity-3"><i>S</i><span><b>Silver Startup</b><small>Brand Identity</small></span><em>→</em></a><a class="wc" href="s.html#brand-identity-4"><i>P</i><span><b>Prime Studio</b><small>Brand Identity</small></span><em>→</em></a><a class="wc" href="s.html#brand-identity-5"><i>B</i><span><b>Bright Rebrand</b><small>Brand Identity</small></span><em>→</em></a><a class="wc" href="s.html#brand-identity-6"><i>U</i><span><b>Urban Franchise</b><small>Brand Identity</small></span><em>→</em></a><a class="wc" href="s.html#brand-identity-7"><i>G</i><span><b>Golden Startup</b><small>Brand Identity</small></span><em>→</em></a><a class="wc" href="s.html#brand-identity-8"><i>M</i><span><b>Maple Studio</b><small>Brand Identity</small></span><em>→</em></a><a class="wc" href="s.html#brand-identity-9"><i>C</i><span><b>Coral Rebrand</b><small>Brand Identity</small></span><em>→</em></a><a class="wc" href="s.html#brand-identity-10"><i>A</i><span><b>Atlas Franchise</b><small>Brand Identity</small></span><em>→</em></a></div><h3 class="sv">Graphic Design</h3><div class="wg"><a class="wc" href="s.html#graphic-design"><i>C</i><span><b>Copper Kettle</b><small>Graphic Design</small></span><em>→</em></a><a class="wc" href="s.html#graphic-design-2"><i>S</i><span><b>Silver Retail</b><small>Graphic Design</small></span><em>→</em></a><a class="wc" href="s.html#graphic-design-3"><i>P</i><span><b>Prime Event</b><small>Graphic Design</small></span><em>→</em></a><a class="wc" href="s.html#graphic-design-4"><i>B</i><span><b>Bright Office</b><small>Graphic Design</small></span><em>→</em></a><a class="wc" href="s.html#graphic-design-5"><i>U</i><span><b>Urban Restaurant</b><small>Graphic Design</small></span><em>→</em></a><a class="wc" href="s.html#graphic-design-6"><i>G</i><span><b>Golden Retail</b><small>Graphic Design</small></span><em>→</em></a><a class="wc" href="s.html#graphic-design-7"><i>M</i><span><b>Maple Event</b><small>Graphic Design</small></span><em>→</em></a><a class="wc" href="s.html#graphic-design-8"><i>C</i><span><b>Coral Office</b><small>Graphic Design</small></span><em>→</em></a><a class="wc" href="s.html#graphic-design-9"><i>A</i><span><b>Atlas Restaurant</b><small>Graphic Design</small></span><em>→</em></a><a class="wc" href="s.html#graphic-design-10"><i>L</i><span><b>Lotus Retail</b><small>Graphic Design</small></span><em>→</em></a></div><h3 class="sv">Promotional Design</h3><div class="wg"><a class="wc" href="s.html#promotional-design"><i>M</i><span><b>Metro Style</b><small>Promotional Design</small></span><em>→</em></a><a class="wc" href="s.html#promotional-design-2"><i>P</i><span><b>Prime Grand opening</b><small>Promotional Design</small></span><em>→</em></a><a class="wc" href="s.html#promotional-design-3"><i>B</i><span><b>Bright Holiday</b><small>Promotional Design</small></span><em>→</em></a><a class="wc" href="s.html#promotional-design-4"><i>U</i><span><b>Urban Event</b><small>Promotional Design</small></span><em>→</em></a><a class="wc" href="s.html#promotional-design-5"><i>G</i><span><b>Golden Sale</b><small>Promotional Design</small></span><em>→</em></a><a class="wc" href="s.html#promotional-design-6"><i>M</i><span><b>Maple Grand opening</b><small>Promotional Design</small></span><em>→</em></a><a class="wc" href="s.html#promotional-design-7"><i>C</i><span><b>Coral Holiday</b><small>Promotional Design</small></span><em>→</em></a><a class="wc" href="s.html#promotional-design-8"><i>A</i><span><b>Atlas Event</b><small>Promotional Design</small></span><em>→</em></a><a class="wc" href="s.html#promotional-design-9"><i>L</i><span><b>Lotus Sale</b><small>Promotional Design</small></span><em>→</em></a><a class="wc" href="s.html#promotional-design-10"><i>S</i><span><b>Summit Grand opening</b><small>Promotional Design</small></span><em>→</em></a></div><div class="pn" style="margin-top:34px"><a href="index.html#work">← Back to work</a><a href="index.html#contact">Contact →</a></div></main><script>
+(function(){
+var main=document.querySelector("main");if(!main)return;
+/* 1. Split the big Website Development list into sub-groups by category */
+var h2s=main.querySelectorAll("h2"),wd=null;
+for(var i=0;i<h2s.length;i++){if(h2s[i].textContent.trim()==="Website Development"){wd=h2s[i];break}}
+if(wd&&wd.nextElementSibling&&wd.nextElementSibling.classList.contains("wg")){
+ var big=wd.nextElementSibling,items=[].slice.call(big.children),groups=[],cur=null;
+ items.forEach(function(a){var c=a.querySelector("small").textContent.trim();
+  if(!cur||cur.c!==c){cur={c:c,a:[]};groups.push(cur)}cur.a.push(a)});
+ var feat=[],rest=[];
+ groups.forEach(function(g){(g.a.length===1?feat:rest).push(g)});
+ var featItems=[];feat.forEach(function(g){featItems=featItems.concat(g.a)});
+ var order=[];if(featItems.length)order.push({c:"Industry Showcase",a:featItems});
+ order=order.concat(rest);
+ var ref=big;
+ order.forEach(function(g){
+  var h=document.createElement("h3");h.className="sv";h.textContent=g.c;
+  var w=document.createElement("div");w.className="wg";
+  g.a.forEach(function(a){w.appendChild(a)});
+  ref.parentNode.insertBefore(h,ref);ref.parentNode.insertBefore(w,ref);
+ });
+ big.remove();
+}
+/* 2. Collapse every group, with a "See more" button */
+var LIMIT=window.innerWidth>=700?6:4;
+[].forEach.call(main.querySelectorAll(".wg"),function(w){
+ var cards=[].slice.call(w.children);if(cards.length<=LIMIT+1)return;
+ var extra=cards.slice(LIMIT);extra.forEach(function(c){c.hidden=true});
+ var b=document.createElement("button");b.type="button";b.className="mb";b.setAttribute("aria-expanded","false");
+ var n=extra.length;
+ function label(open){b.innerHTML=(open?"Show less":"See more examples ("+n+")")+" <span>&#9662;</span>"}
+ label(false);
+ b.addEventListener("click",function(){
+  var open=b.getAttribute("aria-expanded")!=="true";
+  extra.forEach(function(c){c.hidden=!open});
+  b.setAttribute("aria-expanded",open);label(open);
+  if(!open)w.previousElementSibling&&w.previousElementSibling.scrollIntoView({block:"start"});
+ });
+ w.parentNode.insertBefore(b,w.nextSibling);
+});
+/* 3. If a card inside a collapsed group is linked by hash, nothing to do (links go to other pages) */
+})();
+</script>
+</body></html>
