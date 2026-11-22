@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Voyage Hotels · Marketing Campaign demo · Web Juragan</title><link rel="icon" href="favicon.png"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem("wj-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<style>
+:root{--bg:#0a0a0b;--bg2:#111113;--card:#161619;--line:rgba(231,190,100,.18);--ink:#f5f1e8;--muted:#a9a396;--gold1:#f6dc94;--gold2:#d4a63f;--gold3:#8f6a1c;--btn:linear-gradient(135deg,#f6dc94,#d4a63f 55%,#8f6a1c);--g:linear-gradient(135deg,var(--gold1),var(--gold2) 55%,var(--gold3));color-scheme:dark}
+[data-theme=light]{--bg:#fbf7ee;--bg2:#f2ead7;--card:#fff;--line:rgba(143,106,28,.28);--ink:#17130a;--muted:#645b47;--gold1:#a87a1c;--gold2:#8a6212;--gold3:#5e3f08;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Sora,Inter,sans-serif;margin:0;line-height:1.15}a{color:inherit}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.top{border-bottom:1px solid var(--line);padding:14px 0}.top .wrap{display:flex;justify-content:space-between;gap:12px;font-size:14px}.top a{text-decoration:none;color:var(--gold1)}
+.eyebrow{font:600 12px/1 Sora;letter-spacing:.26em;text-transform:uppercase;color:var(--gold2);margin:40px 0 12px}
+h1{font-size:clamp(28px,6vw,44px)}.gt{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:58ch;margin-top:12px}
+.stage{margin:30px 0;padding:22px;border:1px solid var(--line);border-radius:22px;background:radial-gradient(500px 240px at 50% 0,rgba(212,166,63,.14),transparent 70%),var(--bg2);display:grid;place-items:center;min-height:300px;overflow:hidden}
+.cols{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:30px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}.box h3{font-size:16px;margin-bottom:10px}
+.box ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--muted);font-size:14.5px}.box li:before{content:"✓ ";color:var(--gold1)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}.stats b{display:block;font:700 24px Sora;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}.stats span{font-size:12px;color:var(--muted)}
+.btn{display:inline-flex;padding:14px 24px;border-radius:999px;font:600 15px/1 Sora;text-decoration:none;border:1px solid var(--line)}.btn-gold{background:var(--btn);color:#1a1204;border-color:transparent;box-shadow:0 6px 24px rgba(212,166,63,.25)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0 24px}
+.pn{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:18px 0 40px;font-size:14px}.pn a{text-decoration:none;color:var(--muted)}.pn a:hover{color:var(--gold1)}
+.note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+/* mocks */
+.m{width:100%;max-width:420px;color:#1b1710;font-size:12px}
+.win{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.bar{background:#ece6d8;padding:8px 12px;display:flex;gap:5px;align-items:center}.bar i{width:8px;height:8px;border-radius:50%;background:#c9bfa8}.bar em{margin-left:8px;font-style:normal;color:#7a705a;font-size:11px}
+.pg{padding:18px}.pg h4{font:700 20px/1.15 Sora;margin:0 0 6px}.pg p{margin:0 0 10px;color:#6b624e}
+.pill{display:inline-block;background:#1b1710;color:#f6dc94;padding:7px 14px;border-radius:99px;font-weight:600}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.row div{background:#f3ecdb;border-radius:8px;padding:10px 6px;text-align:center;font-weight:600}
+.row div small{display:block;color:#8a6212;font-weight:700;margin-top:3px}
+.img{aspect-ratio:1;border-radius:8px;display:grid;place-items:center;font:700 13px Sora;color:#fff;padding:6px;text-align:center}
+.g1{background:linear-gradient(135deg,#8a5a2b,#d4a63f)}.g2{background:linear-gradient(135deg,#2b3a2f,#7a9a6b)}.g3{background:linear-gradient(135deg,#3a2b4a,#b07acb)}.g4{background:linear-gradient(135deg,#7a2b2b,#e08a5a)}.g5{background:linear-gradient(135deg,#1f3a4a,#5aa6c8)}.g6{background:linear-gradient(135deg,#2a2a2a,#8a8a8a)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.ph{width:170px;aspect-ratio:9/16;border-radius:22px;border:6px solid #111;background:linear-gradient(160deg,#8a5a2b,#1b1710);color:#fff;position:relative;margin:auto;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.ph b{position:absolute;left:10px;right:10px;bottom:40px;font:700 15px/1.2 Sora}.ph span{position:absolute;left:10px;right:10px;bottom:14px;height:4px;border-radius:4px;background:rgba(255,255,255,.3)}.ph span:after{content:"";position:absolute;left:0;top:0;bottom:0;width:55%;background:#f6dc94;border-radius:4px}
+.play{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;color:#fff}
+.vid{aspect-ratio:16/9;border-radius:12px;background:linear-gradient(135deg,#1b1710,#8a5a2b);position:relative;color:#fff;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.tl{display:flex;gap:3px;margin-top:10px}.tl i{height:16px;border-radius:3px;background:#d4a63f;flex:1}.tl i:nth-child(2n){background:#8a6212}.tl i:nth-child(3n){background:#f6dc94}
+.paper{background:#fbf6e9;border-radius:6px;padding:20px;box-shadow:0 20px 50px rgba(0,0,0,.4);text-align:center}
+.paper h4{font:700 22px/1.1 Sora;margin:0 0 6px}.paper hr{border:0;border-top:1px solid #d4a63f;margin:10px 20px}
+.sw{display:flex;height:56px;border-radius:10px;overflow:hidden}.sw i{flex:1}
+.ln{display:flex;justify-content:space-between;border-bottom:1px dotted #bba;padding:5px 0}
+.chip{display:inline-block;background:#f3ecdb;border-radius:99px;padding:3px 9px;margin:2px;font-weight:600}
+.big{width:130px;height:130px;margin:auto}
+.more{margin:0 0 30px}.more h3{font-size:18px;margin:0 0 14px}.chips2{display:flex;flex-wrap:wrap;gap:8px}.chips2 span,.chips2 a{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:8px 14px;font-size:13.5px;color:var(--muted);text-decoration:none}.chips2 a:hover{color:var(--gold1)}
+.steps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.steps div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}.steps b{font:700 22px Sora;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}.steps h4{margin:6px 0 4px;font:600 15px Sora}.steps p{margin:0;color:var(--muted);font-size:14px}
+.price{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}.price b{font:700 28px Sora;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}.price small{display:block;color:var(--muted)}
+.more details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:8px}.more summary{cursor:pointer;font-weight:600}.more details p{margin:8px 0 0;color:var(--muted);font-size:14.5px}
+
+.m{max-width:100%}.hero2{padding:34px 0 10px}.sec{margin:34px 0}.sec>h2{font-size:22px;margin-bottom:14px}.vg{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.vg .stage{margin:0;min-height:0}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:12px;color:var(--gold1);margin-right:6px}
+</style></head><body>
+<div class="top"><div class="wrap"><a href="contoh.html#marketing-campaign">← Marketing Campaign sample</a><span style="color:var(--muted)">Full demo</span></div></div>
+<main class="wrap">
+<section class="hero2"><div class="eyebrow">Full demo · Digital Solutions</div><h1>Voyage Hotels<br><span class="gt">Marketing Campaign</span></h1><p class="lead">A planned campaign from teaser to recap, across every channel. This is a complete demo for the fictional brand “Voyage Hotels”.</p><div class="cta" style="margin-top:18px"><a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/6285117324291?text=Hello%20Web%20Juragan%2C%20I'd%20like%20to%20order%20Marketing%20Campaign">Order Marketing Campaign</a><a class="btn" href="#results">See results</a></div></section>
+<section class="sec"><h2>The result</h2><div class="stage"><div class="m"><div class="win"><div class="pg"><b>Voyage Hotels · Summer Escape Launch</b><div class="ln"><span>Teaser</span><b style="color:#8a6212">Wk 1</b></div><div class="ln"><span>Launch</span><b style="color:#8a6212">Wk 2</b></div><div class="ln"><span>Promo</span><b style="color:#8a6212">Wk 3</b></div><div class="ln"><span>Recap</span><b style="color:#8a6212">Wk 4</b></div><div class="tl"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></div></div></section>
+<section class="sec"><h2>More variations</h2><div class="vg"><div class="stage"><div class="m"><div class="win"><div class="pg"><b>Voyage Hotels · Summer Escape Launch</b><div class="ln"><span>Teaser</span><b style="color:#8a6212">Wk 1</b></div><div class="ln"><span>Launch</span><b style="color:#8a6212">Wk 2</b></div><div class="ln"><span>Promo</span><b style="color:#8a6212">Wk 3</b></div><div class="ln"><span>Recap</span><b style="color:#8a6212">Wk 4</b></div><div class="tl"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></div></div><div class="stage"><div class="m"><div class="win"><div class="pg"><b>Voyage Hotels · Summer Escape Launch</b><div class="ln"><span>Teaser</span><b style="color:#8a6212">Wk 1</b></div><div class="ln"><span>Launch</span><b style="color:#8a6212">Wk 2</b></div><div class="ln"><span>Promo</span><b style="color:#8a6212">Wk 3</b></div><div class="ln"><span>Recap</span><b style="color:#8a6212">Wk 4</b></div><div class="tl"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></div></div></div></section>
+<section class="sec"><h2>What we delivered</h2><div class="cols"><div class="box"><ul><li>Campaign idea and plan</li><li>Multi-channel content</li><li>Launch schedule</li><li>Results recap</li></ul></div><div class="box"><h3>Brief</h3><p style="color:var(--muted);margin:0;font-size:14.5px">Voyage Hotels wanted a planned campaign from teaser to recap, across every channel. We kept it clear, on brand and easy to use.</p><div style="margin-top:12px"><span class="tag">Digital Solutions</span><span class="tag">Marketing Campaign</span></div></div></div></section>
+<section class="sec" id="results"><h2>Typical results</h2><div class="box"><div class="stats"><div><b>4 wks</b><span>Duration</span></div><div><b>3</b><span>Channels</span></div><div><b>+50%</b><span>Sales (sample)</span></div></div></div></section>
+<section class="sec"><div class="box" style="text-align:center"><h3 style="font-size:20px">Want this for your brand?</h3><p style="color:var(--muted)">Yours is made around your brand, market and content.</p><div class="cta" style="justify-content:center"><a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/6285117324291?text=Hello%20Web%20Juragan%2C%20I'd%20like%20to%20order%20Marketing%20Campaign">Order Marketing Campaign on WhatsApp</a></div></div></section>
+<div class="pn"><a href="contoh.html#marketing-campaign">← Back to sample</a><a href="index.html#work">All work →</a></div>
+</main></body></html>
