@@ -87,4 +87,24 @@ h1{font-size:clamp(28px,6vw,44px)}.gt{background:var(--g);-webkit-background-cli
 <section class="sec"><div class="box" style="text-align:center"><h3 style="font-size:20px">Want this for your brand?</h3><p style="color:var(--muted)">Yours is made around your brand, market and content.</p><div class="cta" style="justify-content:center"><a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/6285117324291?text=Hello%20Web%20Juragan%2C%20I%27d%20like%20to%20order%20Social%20Media%20Management">Order Social Media Management on WhatsApp</a></div></div></section>
 <div class="pn"><a href="work.html">← Back to work</a><a href="index.html#contact">Contact →</a></div>
 </main>
-</body></html>
+<script>(function(){
+try{history.scrollRestoration='manual'}catch(e){}
+var K='wj-scroll:'+location.pathname+location.hash,S=window.sessionStorage;
+function save(){try{S.setItem(K,String(window.pageYOffset||document.documentElement.scrollTop||0))}catch(e){}}
+var t;window.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(save,120)},{passive:true});
+window.addEventListener('pagehide',save);
+document.addEventListener('visibilitychange',function(){if(document.hidden)save()});
+var nav=(performance.getEntriesByType&&performance.getEntriesByType('navigation')[0])||{};
+var back=nav.type==='back_forward';
+if(back){var y=0;try{y=parseInt(S.getItem(K)||'0',10)||0}catch(e){}
+if(y>0){var moved=false;['touchstart','wheel','keydown'].forEach(function(ev){window.addEventListener(ev,function(){moved=true},{passive:true,once:true})});
+[0,60,200,500,1000,1800].forEach(function(ms){setTimeout(function(){if(!moved)window.scrollTo(0,y)},ms)})}}
+document.addEventListener('click',function(e){
+var a=e.target.closest&&e.target.closest('a');if(!a)return;
+var txt=(a.textContent||'').trim();if(txt.charAt(0)!=='\u2190')return;
+var r=document.referrer;if(!r||history.length<2)return;
+try{if(new URL(r).origin!==location.origin)return}catch(x){return}
+e.preventDefault();save();history.back();
+});
+})();
+</script></body></html>
