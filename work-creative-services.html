@@ -102,6 +102,26 @@ var LIMIT=window.innerWidth>=700?6:4;
 })();
 </script>
 <script>(function(){
+/* WJ category filter: #category-slug shows only that category's samples, layout unchanged */
+var main=document.querySelector("main");if(!main)return;
+function slug(t){return t.toLowerCase().replace(/&/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}
+var want=decodeURIComponent((location.hash||"").replace(/^#/,""));if(!want)return;
+var heads=[].slice.call(main.querySelectorAll("h3.sv")),hit=null;
+heads.forEach(function(h){if(slug(h.textContent)===want)hit=h});
+if(!hit)return;
+var sty=document.createElement("style");sty.textContent="[hidden]{display:none!important}";document.head.appendChild(sty);
+heads.forEach(function(h){
+ if(h===hit)return;
+ h.hidden=true;
+ var w=h.nextElementSibling;
+ if(w&&w.classList.contains("wg")){w.hidden=true;var m=w.nextElementSibling;if(m&&m.classList.contains("mb"))m.hidden=true}
+});
+var w0=hit.nextElementSibling;
+if(w0&&w0.classList.contains("wg")){var b=w0.nextElementSibling;if(b&&b.classList.contains("mb")&&b.getAttribute("aria-expanded")!=="true")b.click()}
+window.addEventListener("hashchange",function(){location.reload()});
+})();
+</script>
+<script>(function(){
 /* WJ scroll memory v20: restore last scroll position on back/forward */
 var de=document.documentElement,H=history,S=null,L=null;
 try{S=window.sessionStorage}catch(e){}
