@@ -102,23 +102,81 @@ var LIMIT=window.innerWidth>=700?6:4;
 })();
 </script>
 <script>(function(){
-try{history.scrollRestoration='manual'}catch(e){}
-var K='wj-scroll:'+location.pathname+location.hash,S=window.sessionStorage;
-function save(){try{S.setItem(K,String(window.pageYOffset||document.documentElement.scrollTop||0))}catch(e){}}
-var t;window.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(save,120)},{passive:true});
-window.addEventListener('pagehide',save);
-document.addEventListener('visibilitychange',function(){if(document.hidden)save()});
+/* WJ scroll memory v20: restore last scroll position on back/forward */
+var de=document.documentElement,H=history,S=null,L=null;
+try{S=window.sessionStorage}catch(e){}
+try{L=window.localStorage}catch(e){}
+try{H.scrollRestoration='manual'}catch(e){}
+function key(){return 'wj-y:'+location.pathname+location.search+location.hash}
+function y0(){return Math.max(0,Math.round(window.pageYOffset||de.scrollTop||(document.body&&document.body.scrollTop)||0))}
+function st(){try{return(H.state&&typeof H.state==='object')?H.state:{}}catch(e){return{}}}
+function put(o){try{H.replaceState(o,'')}catch(e){}}
 var nav=(performance.getEntriesByType&&performance.getEntriesByType('navigation')[0])||{};
-var back=nav.type==='back_forward';
-if(back){var y=0;try{y=parseInt(S.getItem(K)||'0',10)||0}catch(e){}
-if(y>0){var moved=false;['touchstart','wheel','keydown'].forEach(function(ev){window.addEventListener(ev,function(){moved=true},{passive:true,once:true})});
-[0,60,200,500,1000,1800].forEach(function(ms){setTimeout(function(){if(!moved)window.scrollTo(0,y)},ms)})}}
-document.addEventListener('click',function(e){
-var a=e.target.closest&&e.target.closest('a');if(!a)return;
-var txt=(a.textContent||'').trim();if(txt.charAt(0)!=='\u2190')return;
-var r=document.referrer;if(!r||history.length<2)return;
-try{if(new URL(r).origin!==location.origin)return}catch(x){return}
-e.preventDefault();save();history.back();
-});
+var ntype=nav.type||'navigate';
+var restoring=false,lastW=0,lastY=-1;
+function save(force){
+ if(restoring)return;
+ var y=y0();if(!force&&y===lastY)return;lastY=y;
+ try{S&&S.setItem(key(),String(y))}catch(e){}
+ try{L&&L.setItem(key(),JSON.stringify({y:y,t:Date.now()}))}catch(e){}
+ var n=Date.now();
+ if(force||n-lastW>350){lastW=n;var s=st();s.wjY=y;put(s)}
+}
+/* mark entries reached from another page of this site */
+(function(){
+ var f=0;try{f=+S.getItem('wj-from')||0;S.removeItem('wj-from')}catch(e){}
+ var ref=false;try{ref=!!document.referrer&&new URL(document.referrer).origin===location.origin}catch(e){}
+ var s=st();
+ if(!s.wjInt&&ntype==='navigate'&&((f&&Date.now()-f<20000)||ref)){s.wjInt=1;put(s)}
 })();
-</script></body></html>
+/* figure out where to restore */
+function target(){
+ var s=st();if(s.wjY>0)return s.wjY;
+ if(ntype==='back_forward'||ntype==='reload'){
+  try{var v=parseInt(S.getItem(key()),10);if(v>0)return v}catch(e){}
+  try{var o=JSON.parse(L.getItem(key()));if(o&&o.y>0&&Date.now()-o.t<6*3600*1000)return o.y}catch(e){}
+ }
+ return 0;
+}
+function restore(y){
+ if(!(y>0))return;
+ restoring=true;var moved=false,prev=de.style.scrollBehavior;
+ function stop(){moved=true;done()}
+ var evs=['touchstart','wheel','keydown','mousedown'];
+ evs.forEach(function(ev){window.addEventListener(ev,stop,{passive:true,once:true})});
+ function go(){if(moved)return;de.style.scrollBehavior='auto';window.scrollTo(0,y)}
+ function done(){if(!restoring)return;restoring=false;de.style.scrollBehavior=prev;lastY=y0()}
+ [0,40,120,300,600,1000,1600,2400].forEach(function(ms){setTimeout(go,ms)});
+ window.addEventListener('load',function(){go();setTimeout(go,200)});
+ setTimeout(done,2800);
+}
+restore(target());
+window.addEventListener('pageshow',function(e){
+ if(e.persisted){var y=st().wjY||0;if(y>0&&y0()<5)restore(y)}
+});
+var t;window.addEventListener('scroll',function(){if(restoring)return;clearTimeout(t);t=setTimeout(function(){save(false)},150)},{passive:true});
+window.addEventListener('pagehide',function(){save(true)});
+document.addEventListener('visibilitychange',function(){if(document.hidden)save(true)});
+document.addEventListener('click',function(e){
+ var a=e.target.closest&&e.target.closest('a');if(!a)return;
+ var txt=(a.textContent||'').trim();
+ if(txt.charAt(0)==='\u2190'){
+  if(H.length>1&&st().wjInt){e.preventDefault();save(true);H.back()}
+  return;
+ }
+ if(a.target==='_blank'||a.origin!==location.origin||e.metaKey||e.ctrlKey||e.shiftKey)return;
+ if(a.pathname===location.pathname&&a.search===location.search&&a.hash)return;
+ try{S.setItem('wj-from',String(Date.now()))}catch(x){}
+ save(true);
+},true);
+})();
+</script><script>(function(){
+function slug(t){return t.toLowerCase().replace(/&/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
+[].forEach.call(document.querySelectorAll('h3.sv'),function(h){var s=slug(h.textContent);if(s&&!document.getElementById(s))h.id=s});
+var id='';try{id=decodeURIComponent((location.hash||'').slice(1))}catch(e){}
+if(!id)return;var h=document.getElementById(id);if(!h||h.tagName!=='H3')return;
+var w=h.nextElementSibling,b=w&&w.nextElementSibling;
+if(b&&b.classList&&b.classList.contains('mb')&&b.getAttribute('aria-expanded')!=='true')b.click();
+function go(){h.scrollIntoView();window.scrollBy(0,-16)}
+setTimeout(go,30);setTimeout(go,300);
+})();</script></body></html>
