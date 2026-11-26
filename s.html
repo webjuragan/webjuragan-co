@@ -429,7 +429,7 @@ function act(a,d){var id=d.id!=null?+d.id:null;
  case"shop":S.cat=-1;S.q="";S.sort="";S.banner=0;go("shop");break;
  case"best":S.cat=-1;S.q="";S.sort="best";S.banner=0;go("shop");break;
  case"sale":S.cat=-1;S.q="";S.sort="";S.banner=1;go("shop");break;
- case"cat":S.cat=+d.c;S.q="";go("shop",false);break;
+ case"cat":S.cat=+d.c;S.q="";go("shop");break;
  case"about":go("about");break;
  case"prod":S.pid=id;S.qty=1;go("prod");break;
  case"add":add(id,1);break;
