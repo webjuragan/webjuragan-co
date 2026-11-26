@@ -176,7 +176,6 @@ function slug(t){return t.toLowerCase().replace(/&/g,'').replace(/[^a-z0-9]+/g,'
 var id='';try{id=decodeURIComponent((location.hash||'').slice(1))}catch(e){}
 if(!id)return;var h=document.getElementById(id);if(!h||h.tagName!=='H3')return;
 var w=h.nextElementSibling,b=w&&w.nextElementSibling;
-if(b&&b.classList&&b.classList.contains('mb')&&b.getAttribute('aria-expanded')!=='true')b.click();
 function go(){h.scrollIntoView();window.scrollBy(0,-16)}
 setTimeout(go,30);setTimeout(go,300);
 })();</script></body></html>

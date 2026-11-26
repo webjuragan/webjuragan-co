@@ -116,8 +116,6 @@ heads.forEach(function(h){
  var w=h.nextElementSibling;
  if(w&&w.classList.contains("wg")){w.hidden=true;var m=w.nextElementSibling;if(m&&m.classList.contains("mb"))m.hidden=true}
 });
-var w0=hit.nextElementSibling;
-if(w0&&w0.classList.contains("wg")){var b=w0.nextElementSibling;if(b&&b.classList.contains("mb")&&b.getAttribute("aria-expanded")!=="true")b.click()}
 window.addEventListener("hashchange",function(){location.reload()});
 })();
 </script>
@@ -195,5 +193,4 @@ function slug(t){return t.toLowerCase().replace(/&/g,'').replace(/[^a-z0-9]+/g,'
 var id='';try{id=decodeURIComponent((location.hash||'').slice(1))}catch(e){}
 if(!id)return;var h=document.getElementById(id);if(!h||h.tagName!=='H3')return;
 var w=h.nextElementSibling,b=w&&w.nextElementSibling;
-if(b&&b.classList&&b.classList.contains('mb')&&b.getAttribute('aria-expanded')!=='true')b.click();
 })();</script></body></html>
