@@ -82,9 +82,9 @@ if(wd&&wd.nextElementSibling&&wd.nextElementSibling.classList.contains("wg")){
  big.remove();
 }
 /* 2. Collapse every group, with a "See more" button */
-var LIMIT=window.innerWidth>=700?6:4;
+var LIMIT=5;
 [].forEach.call(main.querySelectorAll(".wg"),function(w){
- var cards=[].slice.call(w.children);if(cards.length<=LIMIT+1)return;
+ var cards=[].slice.call(w.children);if(cards.length<=LIMIT)return;
  var extra=cards.slice(LIMIT);extra.forEach(function(c){c.hidden=true});
  var b=document.createElement("button");b.type="button";b.className="mb";b.setAttribute("aria-expanded","false");
  var n=extra.length;
